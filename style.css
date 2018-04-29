@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+    background: url("wallhaven-75529.jpg");
+    color: white;
+    width: 100%;
+}
+
+#playwrapper{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+#songinfo {
+    font-family: "Bungee", Helvetica, Arial, sans;
+    font-weight: 400;
+    font-size: x-large;
+    position: absolute;
+}
+
+#songtitle{
+    display: inline;
+}
+
+#songartist{
+    display: inline;
+}
+
+#play{
+    display: block;
+    cursor: pointer;
+    width: 225px;
+    height: 140px;
+    background: url("hex.png");
+    margin: auto;
+    margin-top: 239px;
+}
