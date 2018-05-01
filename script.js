@@ -48,8 +48,13 @@ var marqueeRadio = (stream) => {
                     //console.log(data.data.icestats.source[0].title);
                     let artist = data.data.icestats.source[1].artist;
                     let title = data.data.icestats.source[1].title;
-                    $("#songartist").html(artist);
-                    $("#songtitle").html(title);
+                    if(title.toLowerCase() !== "unknown"){
+                        $("#songartist").html(artist);
+                        $("#songtitle").html(title);
+                    } else {
+                        $("#songartist").html("Promo");
+                        $("#songtitle").html("Hex Hello World");
+                    }
                 })
                 .catch((err)=>{
                     console.error(err);
