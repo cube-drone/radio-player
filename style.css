@@ -19,12 +19,14 @@ body{
     position: absolute;
 }
 
-#songtitle{
+#songtitle, #songartist, #listeners, #listener-peak{
     display: inline;
+    margin-bottom: 0;
 }
 
-#songartist{
-    display: inline;
+#stream-location{
+    margin-top: -23px;
+    font-size: x-small;
 }
 
 #play{

@@ -23,6 +23,15 @@ var marqueeRadio = (stream) => {
                     <div id='songtitle'></div>
                     &mdash;
                     <div id='songartist'></div>
+                    &nbsp;
+                    <small>
+                    (
+                    <div id='listeners'></div>
+                    :
+                    <div id='listener-peak'></div>
+                    )
+                    </small>
+                    <div id='stream-location'></div>
                 </div>
                 <div id='play'></div>
             </div>
@@ -48,6 +57,8 @@ var marqueeRadio = (stream) => {
                     //console.log(data.data.icestats.source[0].title);
                     let artist = data.data.icestats.source[1].artist;
                     let title = data.data.icestats.source[1].title;
+                    let listeners = data.data.icestats.source[1].listeners;
+                    let listener_peak = data.data.icestats.source[1].listener_peak;
                     if(title.toLowerCase() !== "unknown"){
                         $("#songartist").html(artist);
                         $("#songtitle").html(title);
@@ -55,6 +66,9 @@ var marqueeRadio = (stream) => {
                         $("#songartist").html("Promo");
                         $("#songtitle").html("Hex Hello World");
                     }
+                    $("#listeners").html(listeners);
+                    $("#listener-peak").html(listener_peak);
+                    $("#stream-location").html(window.location + "/groove.ogg");
                 })
                 .catch((err)=>{
                     console.error(err);
@@ -70,7 +84,7 @@ var marqueeRadio = (stream) => {
                 var timestamp = + new Date();
                 $("#audioplayer").append(`
                 <audio id="source-${timestamp}" autoplay>
-                    <source src="http://hexhelloworld.com/${stream}?id=${timestamp}" type="audio/ogg">
+                    <source src="/${stream}?id=${timestamp}" type="audio/ogg">
                 </audio>`);
 
                 var audioElement = $("#source-"+timestamp).get(0)
