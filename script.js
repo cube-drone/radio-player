@@ -52,13 +52,25 @@ var marqueeRadio = (stream) => {
         let updateMetadata = () => {
             axios.get('/status-json.xsl')
                 .then((data)=>{
-                    //console.log(data);
-                    //console.log(data.data.icestats.source[0].artist);
-                    //console.log(data.data.icestats.source[0].title);
-                    let artist = data.data.icestats.source[1].artist;
-                    let title = data.data.icestats.source[1].title;
-                    let listeners = data.data.icestats.source[1].listeners;
-                    let listener_peak = data.data.icestats.source[1].listener_peak;
+                    console.log(data.data.icestats.source);
+
+                    let artist = "?";
+                    let title = "?";
+                    let listeners = "?";
+                    let listener_peak = "?";
+                    if(Array.isArray(data.data.icestats.source)){
+                        artist = data.data.icestats.source[0].artist;
+                        title = data.data.icestats.source[0].title;
+                        listeners = data.data.icestats.source[0].listeners;
+                        listener_peak = data.data.icestats.source[0].listener_peak;
+                    }
+                    else{
+                        artist = data.data.icestats.source.artist;
+                        title = data.data.icestats.source.title;
+                        listeners = data.data.icestats.source.listeners;
+                        listener_peak = data.data.icestats.source.listener_peak;
+                    }
+
                     if(title.toLowerCase() !== "unknown"){
                         $("#songartist").html(artist);
                         $("#songtitle").html(title);
