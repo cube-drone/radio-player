@@ -6,8 +6,14 @@ _ __ ___   __ _ _ __ __ _ _   _  ___  ___
                         |_|
 
 */
-var marqueeRadio = (stream) => {
 
+const marqueeRadio = () => {
+    const sources = ["groove.ogg", "chill.ogg"];
+    let stream = "groove.ogg";
+    if(window.location.hash && sources.includes(window.location.hash.substring(1))) {
+        stream = window.location.hash.substring(1);
+    }
+  
     var POLL_INTERVAL = 5000;
 
     var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
@@ -32,6 +38,10 @@ var marqueeRadio = (stream) => {
                     )
                     </small>
                     <div id='stream-location'></div>
+                    <div id='streams'>
+                        <a href='#groove.ogg">Groove</a>
+                        <a href='#chill.ogg">Chill</a>
+                    </div>
                 </div>
                 <div id='play'></div>
             </div>
@@ -59,10 +69,17 @@ var marqueeRadio = (stream) => {
                     let listeners = "?";
                     let listener_peak = "?";
                     if(Array.isArray(data.data.icestats.source)){
-                        artist = data.data.icestats.source[0].artist;
-                        title = data.data.icestats.source[0].title;
-                        listeners = data.data.icestats.source[0].listeners;
-                        listener_peak = data.data.icestats.source[0].listener_peak;
+                        let sources = data.data.icestats.source;
+                        let index = 0;
+                        sources.forEach((source, i) => {
+                            if(source.server_url.indexOf(stream) > -1){
+                               index = i;
+                            }
+                        });
+                        artist = sources[index].artist;
+                        title = sources[index].title;
+                        listeners = sources[index].listeners;
+                        listener_peak = sources[index].listener_peak;
                     }
                     else{
                         artist = data.data.icestats.source.artist;
@@ -76,7 +93,7 @@ var marqueeRadio = (stream) => {
                         $("#songtitle").html(title);
                     } else {
                         $("#songartist").html("Promo");
-                        $("#songtitle").html("Hex Hello World");
+                        $("#songtitle").html("Marquee Radio");
                     }
                     $("#listeners").html(listeners);
                     $("#listener-peak").html(listener_peak);
