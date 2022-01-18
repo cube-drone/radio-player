@@ -3,6 +3,7 @@ body{
     background: url("wallhaven-75529.jpg");
     color: white;
     width: 100%;
+    font-family: "Bungee", Helvetica, Arial, sans;
 }
 
 #playwrapper{
@@ -13,7 +14,6 @@ body{
 }
 
 #songinfo {
-    font-family: "Bungee", Helvetica, Arial, sans;
     font-weight: 400;
     font-size: x-large;
     position: absolute;
