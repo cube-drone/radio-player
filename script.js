@@ -37,17 +37,17 @@ const marqueeRadio = () => {
                     <div id='listener-peak'></div>
                     )
                     </small>
-                    <div id='stream-location'></div>
-                    <div id='streams'>
-                        <a href='https://${window.location.hostname}?1#groove.ogg'>Groove</a>
-                        <a href='https://${window.location.hostname}?2#chill.ogg'>Chill</a>
-                    </div>
                 </div>
                 <div id='play'></div>
             </div>
             <canvas id='waveform' />
             <div id='audioplayer'>
 
+            </div>
+            <div id='stream-location'></div>
+            <div id='streams'>
+                <a href='https://${window.location.hostname}?1#groove.ogg'>Groove</a>
+                <a href='https://${window.location.hostname}?2#chill.ogg'>Chill</a>
             </div>
         `);
 
