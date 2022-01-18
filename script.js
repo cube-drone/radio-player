@@ -97,7 +97,7 @@ const marqueeRadio = () => {
                     }
                     $("#listeners").html(listeners);
                     $("#listener-peak").html(listener_peak);
-                    $("#stream-location").html(window.location.hostname + "/" + stream);
+                    $("#stream-location").html("https://" + window.location.hostname + "/" + stream);
                 })
                 .catch((err)=>{
                     console.error(err);
