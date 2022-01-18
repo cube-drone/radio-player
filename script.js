@@ -39,8 +39,8 @@ const marqueeRadio = () => {
                     </small>
                     <div id='stream-location'></div>
                     <div id='streams'>
-                        <a href='https://${window.location.hostname}#groove.ogg'>Groove</a>
-                        <a href='https://${window.location.hostname}#chill.ogg'>Chill</a>
+                        <a href='https://${window.location.hostname}?1#groove.ogg'>Groove</a>
+                        <a href='https://${window.location.hostname}?2#chill.ogg'>Chill</a>
                     </div>
                 </div>
                 <div id='play'></div>
